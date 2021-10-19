@@ -4,7 +4,7 @@ import InputIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import userAction from '../../redux/actions/users';
+
 import actions from '../../redux/actions';
 
 const Action = ({ data }) => {
@@ -12,7 +12,7 @@ const Action = ({ data }) => {
   const userList = useSelector((state) => state.usersReducer.data);
 
   const handleEdit = () => {
-    dispatch(userAction.handleEditModal({ open: true, data: data }));
+    dispatch(actions.editRecord(data));
   };
 
   const handleDelete = () => {
@@ -33,7 +33,7 @@ const Action = ({ data }) => {
 };
 
 Action.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
 };
 
 export default Action;

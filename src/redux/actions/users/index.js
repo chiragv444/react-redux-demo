@@ -1,4 +1,3 @@
-import { FamilyRestroomTwoTone } from '@material-ui/icons';
 import axios from 'axios';
 
 const getAllList = () => async (dispatch) => {
@@ -19,7 +18,7 @@ const getAllList = () => async (dispatch) => {
   }
 };
 
-const editRecord = (data, setSubmitting, handleClose) => async (dispatch) => {
+const editRecord = (data) => async (dispatch) => {
   try {
     const response = await axios.put(
       `localhost:3000/programs/${data.id}/edit`,
@@ -30,27 +29,20 @@ const editRecord = (data, setSubmitting, handleClose) => async (dispatch) => {
       type: 'GET_EDIT_RECORD',
       payload: response
     });
-    setSubmitting(false);
-    handleClose({ open: false, data: null });
   } catch (err) {
     dispatch({
       type: 'GET_EDIT_RECORD_ERRORS',
       payload: 'Something went wrong for edit record'
     });
-    setSubmitting(false);
-    handleClose({ open: false, data: null });
   }
 };
 
 const deleteRecord = (data) => async (dispatch) => {
   try {
-    // const response = await axios.delete(
-    //   `https://jsonplaceholder.typicode.com/users/${data.id}`
-    // );
+    
     dispatch({
       type: 'GET_DELETE_RECORD',
       payload: data
-      //   success: !!response.d/ata
     });
   } catch (err) {
     dispatch({
@@ -60,16 +52,8 @@ const deleteRecord = (data) => async (dispatch) => {
   }
 };
 
-const handleEditModal = (data) => async (dispatch) => {
-    dispatch({
-      type: 'HANDLE_EDIT_RECORD',
-      payload: data
-    });
-};
-
 export default {
   getAllList,
   editRecord,
-  deleteRecord,
-  handleEditModal
+  deleteRecord
 };

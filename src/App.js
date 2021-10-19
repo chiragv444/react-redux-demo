@@ -1,4 +1,4 @@
-// import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import { useRoutes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import routes from './routes';

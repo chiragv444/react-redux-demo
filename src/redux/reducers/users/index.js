@@ -5,11 +5,7 @@ const intialStore = {
   success: false,
   loading: false,
   data: null,
-  errorMessage: null,
-  editModal: {
-    open: false,
-    data: null
-  },
+  errorMessage: null
 };
 
 export default (state = intialStore, action) => {
@@ -21,20 +17,11 @@ export default (state = intialStore, action) => {
         loading: false,
         data: action.payload
       };
-    case 'HANDLE_EDIT_RECORD':
-      return {
-        ...state,
-        editModal: {
-          ...state.editModal,
-          ...action.payload
-        }
-      };
-    case 'OPEN_EDIT_MODAL':
+    case 'GET_EDIT_RECORD':
       return {
         ...state,
         success: true,
         loading: false,
-        data: action.payload
       };
     case 'GET_DELETE_RECORD':
       return {
